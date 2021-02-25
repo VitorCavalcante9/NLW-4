@@ -1,12 +1,12 @@
 import {MigrationInterface, QueryRunner, Table} from "typeorm";
 
-export class CreateUsers1614188730000 implements MigrationInterface {
+export class CreateSurveys1614272584066 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         let type = process.env.NODE_ENV === 'test' ? "uuid" : "integer";
         await queryRunner.createTable(
             new Table({
-                name: "users",
+                name: "surveys",
                 columns: [
                     {
                         name: "id",
@@ -14,11 +14,11 @@ export class CreateUsers1614188730000 implements MigrationInterface {
                         isPrimary: true
                     },
                     {
-                        name: "name",
+                        name: "title",
                         type: "varchar"
                     },
                     {
-                        name: "email",
+                        name: "description",
                         type: "varchar"
                     },
                     {
@@ -32,7 +32,7 @@ export class CreateUsers1614188730000 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable("users");
+        await queryRunner.dropTable("surveys");
     }
 
 }
