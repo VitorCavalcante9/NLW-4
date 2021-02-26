@@ -3,7 +3,7 @@ import {MigrationInterface, QueryRunner, Table} from "typeorm";
 export class CreateUsers1614188730000 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
-        let type = process.env.NODE_ENV === 'test' ? "uuid" : "integer";
+        let type = process.env.NODE_ENV === 'test' ? "uuid" : "varchar";
         await queryRunner.createTable(
             new Table({
                 name: "users",
